@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import auth, profiles, chat, health_graph, health_chat, meds
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
+from routes import auth, profiles, chat, health_graph, health_chat, meds
 app = FastAPI(
     title="Swasthya AI Backend",
     description="Python FastAPI backend for authentication and profile management.",

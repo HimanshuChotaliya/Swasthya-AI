@@ -280,6 +280,7 @@ const SlideView: React.FC<{ slide: any; index: number; isActive: boolean }> = ({
   const contentOpacity = useSharedValue(0);
   
   const getLottieSource = () => {
+    if (Platform.OS === 'web') return null;
     try {
       const animations = [
         require('@/assets/lottie_animations/login_animation_1.json'),
@@ -296,12 +297,20 @@ const SlideView: React.FC<{ slide: any; index: number; isActive: boolean }> = ({
 
   useEffect(() => {
     if (isActive) {
-      contentOpacity.value = withTiming(1, { duration: 500 });
+      if (Platform.OS !== 'web') {
+        contentOpacity.value = withTiming(1, { duration: 500 });
+      } else {
+        contentOpacity.value = 1;
+      }
       setTimeout(() => {
         lottieRef.current?.play();
       }, 800);
     } else {
-      contentOpacity.value = withTiming(0, { duration: 300 });
+      if (Platform.OS !== 'web') {
+        contentOpacity.value = withTiming(0.3, { duration: 300 });
+      } else {
+        contentOpacity.value = 1;
+      }
     }
   }, [contentOpacity, isActive]);
 

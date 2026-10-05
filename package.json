@@ -1,0 +1,10 @@
+{
+  "name": "swasthya-ai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "web:dev": "npm run dev --prefix web",
+    "web:build": "npm run build --prefix web",
+    "app:start": "npm run start --prefix app"
+  }
+}
