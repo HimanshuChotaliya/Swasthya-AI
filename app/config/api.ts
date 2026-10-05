@@ -7,7 +7,7 @@ import Constants from 'expo-constants';
  * - Otherwise dynamically detects the local development machine's IP address.
  */
 const getDevBackendUrl = () => {
-  const envUrl = process.env.EXPO_PUBLIC_BACKEND_URL;
+  const envUrl = process.env.EXPO_PUBLIC_API_URL;
   if (envUrl) return envUrl;
 
   // Dynamically detect local dev machine IP from Expo bundler
